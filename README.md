@@ -1,1 +1,820 @@
 # lista-de-presentes-LM
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lista de Casamento | Letícia & Marcos</title>
+
+  <meta name="description" content="Lista de casamento de Letícia e Marcos">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root {
+      --creme: #fffaf5;
+      --creme-2: #fdf4ed;
+      --rosa: #dca7a9;
+      --rosa-claro: #f2d7d5;
+      --verde: #9eaf9a;
+      --verde-claro: #dce5d8;
+      --marrom: #715d55;
+      --texto: #574b46;
+      --branco: #ffffff;
+      --sombra: 0 8px 25px rgba(108, 84, 73, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(242, 215, 213, .35), transparent 22%),
+        radial-gradient(circle at 90% 70%, rgba(220, 229, 216, .40), transparent 24%),
+        var(--creme);
+      color: var(--texto);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* CABEÇALHO */
+
+    header {
+      min-height: 470px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 70px 20px;
+      background:
+        linear-gradient(rgba(255,250,245,.78), rgba(255,250,245,.92)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=80")
+        center / cover;
+      position: relative;
+      border-bottom: 1px solid rgba(113,93,85,.08);
+    }
+
+    .hero {
+      max-width: 850px;
+    }
+
+    .small-title {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      color: var(--verde);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(58px, 10vw, 105px);
+      font-weight: 500;
+      color: var(--marrom);
+      line-height: .95;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 25px;
+      color: var(--marrom);
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      max-width: 620px;
+      margin: auto;
+      font-size: 14px;
+      color: #71645e;
+    }
+
+    /* MENU */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,250,245,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(113,93,85,.08);
+      padding: 12px 15px;
+    }
+
+    .nav-container {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--marrom);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      background: var(--rosa-claro);
+    }
+
+    /* CONTEÚDO */
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 65px;
+    }
+
+    .intro h2,
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--marrom);
+      font-size: 43px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      font-size: 14px;
+      color: #756963;
+    }
+
+    .section {
+      margin-bottom: 75px;
+      scroll-margin-top: 85px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-heading .category {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--verde);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    /* CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(113,93,85,.09);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--sombra);
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 13px 30px rgba(108,84,73,.14);
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--marrom);
+      font-size: 25px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--rosa);
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card-spacer {
+      flex-grow: 1;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--verde);
+      color: white;
+      text-decoration: none;
+      padding: 11px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .button:hover {
+      background: #899c84;
+      transform: translateY(-1px);
+    }
+
+    /* PRESENTES ESPECIAIS */
+
+    .special-section {
+      background:
+        linear-gradient(135deg, rgba(242,215,213,.45), rgba(220,229,216,.45));
+      padding: 45px 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(113,93,85,.08);
+    }
+
+    .special-section .card {
+      background: rgba(255,255,255,.88);
+    }
+
+    .special-label {
+      display: inline-block;
+      background: var(--rosa-claro);
+      color: var(--marrom);
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      background: #f5e8df;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    footer h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      color: var(--marrom);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 13px;
+      color: #756963;
+    }
+
+    .heart {
+      color: var(--rosa);
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 850px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+
+      header {
+        min-height: 420px;
+        padding: 50px 20px;
+      }
+
+      h1 {
+        font-size: 65px;
+      }
+
+      .hero-subtitle {
+        font-size: 21px;
+      }
+
+      main {
+        padding: 50px 15px;
+      }
+
+      .intro h2,
+      .section-title {
+        font-size: 37px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .card {
+        min-height: 195px;
+      }
+
+      .special-section {
+        padding: 30px 15px;
+        border-radius: 22px;
+      }
+
+      nav a {
+        font-size: 10px;
+        padding: 7px 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero">
+    <div class="small-title">Nossa nova história começa aqui</div>
+
+    <h1>Letícia &amp; Marcos</h1>
+
+    <div class="hero-subtitle">
+      Lista de presentes
+    </div>
+
+    <p class="hero-text">
+      Estamos construindo nosso cantinho com muito carinho e cada presente
+      fará parte dessa nova etapa da nossa história.
+    </p>
+  </div>
+</header>
+
+
+<nav>
+  <div class="nav-container">
+    <a href="#lar">Nosso Lar</a>
+    <a href="#cozinha">Cozinha</a>
+    <a href="#quarto">Quarto &amp; Banho</a>
+    <a href="#eletros">Eletros</a>
+    <a href="#especiais">Presentes Especiais</a>
+  </div>
+</nav>
+
+
+<main>
+
+  <section class="intro">
+    <h2>Escolha um presente para nós</h2>
+
+    <p>
+      Preparamos essa lista com alguns itens que desejamos para nossa casa.
+      Você pode escolher o presente que mais gostar e, ao clicar em
+      <strong>“Ver presente”</strong>, será direcionado para a loja onde
+      encontramos aquele item.
+    </p>
+  </section>
+
+
+  <!-- NOSSO LAR -->
+
+  <section class="section" id="lar">
+
+    <div class="section-heading">
+      <span class="category">Para a nossa casa</span>
+      <h2 class="section-title">Nosso Lar</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <h3>Mop Flat Esfregão</h3>
+        <div class="price">R$ 41,74</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1613200158/23194739322?d_id=2617a&uls_trackid=56dj8clj01ik&utm_content=3TR3zAGztkPLekBfLnL98RjVJDmq" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit 3 Cestos de Bambu</h3>
+        <div class="price">R$ 41,86</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BIfvJP06oOOlKN0k9%2FFlTD2zYHBuWFGtjGJcOloiPZ8jOLpRV0PA9miwhRG41tkNf236def51bYs%2B0HSIE5yHuGLaawWS%2F6cqBuD6I2Y25%2FjI8ZE4QoIHBcfK10Xhm76UEj1EhjCyJmRMIgs%2ByUNpFApZlUv2pyCFOfSQcpEujUnS9QO8NoRdBN3BINgNI9cviPafATrUklkGkUvMaVyv2uv4%2B2o2T8oDRZucQ%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit Tapete de Banheiro · Areia</h3>
+        <div class="price">R$ 51,89</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1551841162/58257503731?d_id=2617a&uls_trackid=56djkjl800jo&utm_content=3TR3zAGztpvcHuxbgCUyumwEfHFM" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Cesto de Roupas · 72 L</h3>
+        <div class="price">R$ 64,18</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1202669405/22994876216?d_id=2617a&uls_trackid=56djkn2d00ic&utm_content=3TR3zAGztqBm7yu5AunFvwnWBNej" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit Protetor de Travesseiro</h3>
+        <div class="price">R$ 68,99</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BNyrAEwDTQxDNjs3xHlk21h6lmQwTB1txG%2FUCj1GJ4xpGsD6%2FqZK8yHihx07eW1WGNTXailjcgHvxzdv0eEqQ5YIwXgZ3SS6kULByh5OU8HTjPGCVCNqggEZKHTWSfXWLWRhRz2moAUHx2idXt1Tus4D%2FbQ8lHJiinh%2F4WemzH1tDYSs%2BsLhLQWNY1idmbVu5goQ%2BokYBU5UUOhkDUeljBsYYRmFUwEMUIUxSw%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Porta-Pães</h3>
+        <div class="price">R$ 70,71</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BKt8%2BsjU12g%2Fkj32XcDHOX6hkgxgZtogL9CU0y1cX59s8QkjRTYfG%2FKVf%2FqFfyI5h2y0UQPFxpPUaSQY%2FDxMkk0JbNFbkKlVTpyn5wWNUJ7XudwwgparoX7ScF5CIpwmsjyF20laMg9ikJO%2BH2E3A8JPRR%2Bgvlx95aAF%2BOrotufDnuGnEo5F%2B0fmPDCLH0Dqb1PhTThyy1570HLfEjTP8sAdn2mmcrTlLOC9jx3GUPo9gONvnA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Tábua de Passar · Branca</h3>
+        <div class="price">R$ 94,58</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/828345931/58263697955?d_id=2617a&uls_trackid=56djkouj00r5&utm_content=3TR3zAGztqTm4g6DmWPPh2GRpgJs" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Varal de Aço Retrátil · 5 Barras</h3>
+        <div class="price">R$ 141,55</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1479426364/57755015455?d_id=2617a&uls_trackid=56djkqmf00hl&utm_content=3TR3zAGztqdMaqxatRy5qosfNfnF" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit 3 Prateleiras</h3>
+        <div class="price">R$ 259,76</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BF%2B7%2BYl4jVM4%2FTUd6DK6shF6s6UqQMZTbRASp0%2FXhU7fys00mGuizzl9D72lpCcY7vdZqmb8pp3ooUMASNZi5ZQlqNfel9241V1s1kaKo625XqRHtVZcYKFzRa5%2Fl7M98QcLjDY%2BUpjC8THOhjmNjRPiaqvbEhZtOdeOBF3Xlv%2FLqAtSe9JXJXhuIVpJvM%2FfgPuAPA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- COZINHA -->
+
+  <section class="section" id="cozinha">
+
+    <div class="section-heading">
+      <span class="category">Para preparar nossas refeições</span>
+      <h2 class="section-title">Cozinha</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <h3>Jogo de Travessas</h3>
+        <div class="price">R$ 49,82</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BKOTWO3WL2YQpYJhnDOzctoKf9snl9R6sVnnQMyuWE61AHh5oKC%2BKl6GYWwLyWicxoVBKMmGgy6Xo4Ns98jT6oAZlQadVkGVmdou4%2BKfjBfaF67o8rxFuzwQnmg051cEQE8ru%2FvCohIWJ8SZ1M2FW5aW04kW42L9ZvBzF2YvlliuJEAp%2F4%2F6nRmuIiWdbD9jpXSPyXP08rSxc2MthcPueNkwNCCnKUruBpof9jL4EE2rjisqLg%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit de Formas</h3>
+        <div class="price">R$ 54,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BHhWzVAhPSvVcHncPknf9h6ZkbLlZDXCLkiltWylMTsyqP2IOrAmSUD5fURwVv3iZLfQKJW8JAXiqPXlEMIbQ5aIXCdIcwrFvjVrRnE7eoKyvlVYmySf4BEwWQx93x7Wz4BOXct4OHb%2BDzilVD18m8LOxEwEj18d2zOXxkHNBdDv4IVco9IS%2BmTOlTYFoVNdUK9D38ZSnWAPTLw4IKQhZIpRDklmiipdY4ZLSmJx18o5gCbA#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Travessa Lasanheira</h3>
+        <div class="price">R$ 56,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BJbaxc95gcKLs4x07AytRG3JKxyVBkcWtzVfKrwYyklQZNN5AkTZvPlF2rea7KVZQqSFpYSOiRPA6Si31PkqKU4GnJIKFoh3A6isRw4450d4s6jgm2LajHRSUfblGUZ2xUTy1%2B8NyQDFnsUWfMR8tsStP1%2FjwRkohHqRAdn94AjiB5BzcJys4w9BQUN0BjIsAHVWa6s5%2FwtVNeHnRCAhOp233BG2urZf8zz68w%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Faqueiro</h3>
+        <div class="price">R$ 61,06</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BOAkdS66lXldr3h2R5X6F2GgNSzl0nKDxeAZ%2FsDC7TjenqNuyt%2FoyMpdjA5yMEs4VUTlzGYVfpqQsc7fTLvgSI72gBEUlJZQFBvqrTz2HUYfMfEgQMERUkOgoZzxVwaNjP7BM83hKhNL1oqZ3wlai%2FQWGaBgf2YPNWGZSvh9%2FQw6Nz%2FFytPuOHvvoEDTpzcVGg%2FQGHZiDwUIbQKKtJp5c%2F5WoZef%2BSRxEVcYwA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Chaleira Elétrica · 127V</h3>
+        <div class="price">R$ 74,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BLcb%2BoDsjuc4q%2F%2BA8y6NlSJWL%2FfkHRclETjYmyMA%2Fg1ZgQ40JxYW%2B6zynt%2FuFnOn3VntuGvMJTQyHcX%2FmhEAhDj7a11FJ6kj3RPtie3in8S1ukLIzrWW%2BAo72iU%2FrWrpnVu59VR%2BnzDXYkEpxnzgeHUq0ilHeCzN5qdeSoX0UPj2YkCVVdW6Z3ycLflqvv%2BAD%2B%2BBhy2xFUDpKoDfnMkvNfciAn5mmVnt5iI7aqiteMMtEGAT#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Panela de Pipoca</h3>
+        <div class="price">R$ 78,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BETY9waiansfy9FRTfEXBPd2ZfMh35xP%2FhrpLNnwmgSKCLnxzDafyAY8DmTW7nA%2Fv1rrztCDHTDHgPNWxwKBEohd7LPFWr5oZYsw%2FQPNe9vvcDkugAvdEnDBtV72b%2FX7%2FXIlIY%2BFuBjF0oF1jIZWyYz%2F0abeAUvnwJTG8fwZQkgp90a%2B3wX4cfjcCtvkpzhhPhOEHl2LQJRUcvOS7j22VmKAEwRp7s9RWpoOSi8%2Bcu25TEynSA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit 12 Panos de Prato</h3>
+        <div class="price">R$ 79,95</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/302034107/58254822352?exp_group=rollout&gads_t_sig=gqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMHJtu46N4YL1ETOwWAbpdPCpoOnQDXHQJ5OvtcN0M_eDbRA41r_846ydnLzTRf_samdRHEh2GSlumtjiKqmNpcGhlcnRleHTElwAAAAxXPSaQbwfV8wnom90ggyfZU6_0RqhX4D4HElphGCZxuIgzpfREqQVkPbChkkJrce2wQy5St4dkmWg_GnYAgiK42kK6e5hBVaDZ-H46KNktEe8z1aLN0hAPY7f_FwEMDtsY6OXKLNKklXyVuSdJz1WMOU0LuiCF8tqmfZW80OMJj4RTte2wyXTiDLuXq5cWs1l82Uo&mmp_pid=an_18362690147&uls_trackid=56djgqca00ic&utm_campaign=id_1CUU4KxFw5p&utm_content=----&utm_medium=affiliates&utm_source=an_18362690147&utm_term=fdzwg7iop46j" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Grill Sanduicheira · 127V</h3>
+        <div class="price">R$ 92,92</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BL4ki9h0Hv0czlaFm4g9C%2FXFctpIWTrDOSQQAuS40HhddUbYuP%2FNkSCe7weVI3CRsg3aGgW0ZheESHS%2FL1BLXVauW5AoS%2FsuzVaY%2BNc%2FSiBCqR88VHeXth9rCHOZkDaLd2SxmlO%2B4UH2gQoIup7DHJPqgWzzug4xXdqtTItnov4S4wT%2FOFZd3eMr59ffMWjGG3rSp0ANYvLxJ7A8V%2Bb1k9T42a1x2T3UoPb8NXlUIM7QhwxB1w%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo 6 Pratos · Rasos</h3>
+        <div class="price">R$ 144,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BNGMpERKKfraQLbHDML2GozjkFjYjiPH91%2BosJTCAcdunPWbFRv%2BE0kc%2BH0QP6VmrjvQAn4xbrn2n8kNSqeUef5QmN684HFWSk%2BC7WFF8tFnd5XtrNCjE2uUwCQ%2BGVF0jDsLpQu%2FzEpeOamOwnsnAKTuIEYSLYV%2F6DJHKxhJceERL8opAc8xM9iSN0klnmihRsfGclNihVOkU8UGHN2zRg%2BnVCFI22%2F6DVzMtCoHCTRKPfFD#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Bowls</h3>
+        <div class="price">R$ 144,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BNge4EuNmlzsuLu9ApIYiqAN%2Bj631jTiMRV74VoCyzFUEkbiAc5TwGgArtKzj%2FLQaPogT8MVgJyIXA2H%2BWM6GVLTCrgisESRC8kMqydHvdUfwUpuP2m0st6WCzGAJiAdDv6COSKREVCjQGgC2HXLC6vjEVX0AG7vAttXrmp2Nx1cl5eCkVAPqGo3XKcRORyDBpUaaudPui4%2FPTkD3KvBacN%2BOtIq%2FCIiquqM6A%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo 6 Pratos · Fundos</h3>
+        <div class="price">R$ 173,91</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BH%2F0yNmgYmLwRCW2gS4T%2Bjq5DGGmIvDSPv8OtsMiAIKdEC9egvhEPGjYOXXTup23dMNSiaCVr9UIuK3QnwihpTYwHC02gAFE3I%2FXUiNomUMl8EEvOW9TigSx%2FWvqePpqcaZNkk7AWfDKzuyaYKL0ySaOfwyoz%2FR%2FXHZVvOKvkDlPCpkHySd6rHeAmWPynBl9ndcHygAwtmWijPAmiiHJPpLpLLqLgNykXLndmg%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit 10 Utensílios</h3>
+        <div class="price">R$ 138,50</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BLsyFksn3VStGYThJCeAv%2FGJMePKAco6Tsw%2FwlVM9xy%2FYDipsVlsHZ9Otd%2FVW%2FkgyqxuMfqKzz5eylxlDLez7rrMERdJNAjaYuGS6aKIPPrB2e1sUYj3mb%2FVVbKoWoCfhggbpE5%2F4qjGGgc9qnQJGYtch%2BPMoFbTApJrSUqUqhlUWpkWl04bb82hteviMtPXmkmhSw%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- QUARTO E BANHO -->
+
+  <section class="section" id="quarto">
+
+    <div class="section-heading">
+      <span class="category">Para o nosso cantinho</span>
+      <h2 class="section-title">Quarto &amp; Banho</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <h3>Protetor de Colchão · Queen Size</h3>
+        <div class="price">R$ 99,99</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAr5kezMd%2FRZnayhuYLmhQQzDwvfmOrm2Kd2fnBw3nC1qj%2Frf09R5V0mMdL9pRA59hwIIWWSDPaR8u8hoD9mIMysMbr8KfekzBJbXiv1%2BOsGixwIJWiRdGQPZEe9oOCWwrntmiJ8ROsbGW4nkjSw8bdKLXBCqglBoiaE1aj6mdTobbXDzL7JGL1SHGsDSPOehlOSAmlVNXbPxZcMNlKkoyKyvVHIeMawd7ufAQ%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Toalhas · Rose</h3>
+        <div class="price">R$ 106,60</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/jogo-de-toalha-banho-4-pecas-100-algodao-400-grm-loft-camesa/p/MLB46100682?product_trigger_id=MLB46208385&pdp_filters=item_id%3AMLB4000561115&applied_product_filters=MLB46014466&picker=true&matt_event_ts=1786737666292&matt_d2id=ab1b09d5-ccaa-4dbc-8123-1b3569ca01a4&matt_tracing_id=49916e7d-19b6-47d3-8779-f709f9ddf0ce&quantity=1" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Toalhas · Azul</h3>
+        <div class="price">R$ 108,33</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAXa8kIrOdqRhTFkC%2BlMSrNlRm%2B89SOrCec1vAAqnPzldnHFe4N736UvRT%2B%2F3WYguW8oQ1mdh0SUJBe3slY1QNptVCxrtuqC2er%2B4rhXBrtc5TUBA%2B3WUEd%2FnxbwfkWGweAWphzX9PwlQJVl30PegPWC7yj2xbPLHucFLskmqpG2FhWuKRN1Wr2opbZZ97QMwGbU%2BXak3Lt%2BLOVX9jzt4Oqbv8pX4dQyH1%2FI3WWnBANCEnf4Jg%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit 2 Travesseiros</h3>
+        <div class="price">R$ 111,92</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAstecGNEyByVlkWfJJDJKO66hkkj0HbsnKXlz8ruwKqsr86qUsdowjEDkDEmkWHyNfzU8AetPtMKezlvNbstMPJf5%2FtnlDd3ffn5YD2DK%2FkZqWbhe2%2FR35U82I0vGm5mntBXw31ZlonSfwcCIjdEJkKJC1ai7Xuaf6XVvhdLI5%2BHmIhg3K2tteYjJtlK4cifBYonjpug67CaLneeOZ2kl0tgfvsVUVcAmmDFA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit Cobre-Leito · Bege</h3>
+        <div class="price">R$ 129,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAN7BBlHDSESfqzqxzfqTper7pAU%2FyEqdE8sJD2qYgFRSpBtM0UC2rWFH%2Bsq7YfD0if91bgoP0NVwyfmwieHLUG9Gg177I2UV5LDEj9GtvYSGmV5ioxEJBESJSESp80NNSfXoaf7sIMRCzMLOpeRE29l8nOV4ciredm88XOmLfXr6yCDgqRQowRqoJsnW264nR2saA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Kit Cobre-Leito · Branco</h3>
+        <div class="price">R$ 129,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAN7BBlHDSESfqzqxzfqTper7pAU%2FyEqdE8sJD2qYgFRSpBtM0UC2rWFH%2Bsq7YfD0if91bgoP0NVwyfmwieHLUG9Gg177I2UV5LDEj9GtvYSGmV5ioxEJBESJSESp80NNSfXoaf7sIMRCzMLOpeRE29l8nOV4ciredm88XOmLfXr6yCDgqRQowRqoJsnW264nR2saA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Lençol · Queen · Azul</h3>
+        <div class="price">R$ 196,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BP0HI%2BpQvu0w68n6GLP0nLpmUe4Qy%2B7bD1iavUPIKmracEhUbyutXwASMDaALolHLgCjZpkxVUdVyjO9rJ6GU32iCgcJ3kjYfOJiTaUsuqVd%2BOM4K3KWDA8G9%2FnQolgz9w%2FCbqJ0bnoLjX20iKsDlrNdHMaImmqz2CxudvR7JheENBqLXOkTYDfGNhRPeyJk4o2AMQ%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Lençol · Queen · Branco</h3>
+        <div class="price">R$ 196,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BP0HI%2BpQvu0w68n6GLP0nLpmUe4Qy%2B7bD1iavUPIKmracEhUbyutXwASMDaALolHLgCjZpkxVUdVyjO9rJ6GU32iCgcJ3kjYfOJiTaUsuqVd%2BOM4K3KWDA8G9%2FnQolgz9w%2FCbqJ0bnoLjX20iKsDlrNdHMaImmqz2CxudvR7JheENBqLXOkTYDfGNhRPeyJk4o2AMQ%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Jogo de Lençol · Queen · Flor Rosê</h3>
+        <div class="price">R$ 205,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://produto.mercadolivre.com.br/MLB-4375156811-jogo-de-lencol-queen-4-pecas-300-fios-barrado-bordado-_JM?attributes=FABRIC_DESIGN%3AQmFycmFkbyBCb3JkYWRv%2CCOLOR_SECONDARY_COLOR%3ARmxvciBSb3PDqg%3D%3D&picker=true&searchVariation=188251982314&matt_event_ts=1786974439203&matt_d2id=ab1b09d5-ccaa-4dbc-8123-1b3569ca01a4&matt_tracing_id=a9dd3127-bdf5-4737-bf85-70d51089930a&quantity=1" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ELETROS -->
+
+  <section class="section" id="eletros">
+
+    <div class="section-heading">
+      <span class="category">Para facilitar nosso dia a dia</span>
+      <h2 class="section-title">Eletrodomésticos</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <h3>Ferro de Passar · 127V</h3>
+        <div class="price">R$ 179,90</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BMrcK2IJHC6NBAu6qlrDMxOvp6ajoWaBw5HUn4b8LjiCzyWXg8CTYhXxcc13THo309fPSWAtDQjzw%2BQfzpGOGRtzV5Mwq8SKmIfSM%2BKZ6x6MdXEB0Rrvm%2Bn08FUgZeF23n%2BThdQW0cGeGUo%2FGeyn9TtqAtWx%2FDCqKTxRgYWjOjgxjJsLr4PAewQ66w%2FWX86VvagPXZjEjMBfwBfwmSOUKmSJKCn8X3tYzvjBttEDd3JmeIMY#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Liquidificador · 127V</h3>
+        <div class="price">R$ 188,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BJMDmnB9umKu5kC3zQ2gPjJLfptJhF6iiZKbjUxoL9rHyZLGawJ5D8usBx1iiE0bNn8JmBMURhtXI%2BPk6sQlOh2RBZAqQ%2Bw4GeYK%2FMoJkjQL40P34zN2TCnqTKaPom2BCAIpXFxBmaO21BIxLYQ3T6KmwzhvFR1CQ9rjzYuj%2F3fX3%2BQZyUIoOHsCI%2Ba8sh7bi4iYEdoH0UyFoCMsyLLKj02JKbMD5bjVJjDz%2BA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Aspirador de Pó · 127V</h3>
+        <div class="price">R$ 192,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BPXQ6DNQKLElfqpw1o9H8il6vvPNbgwrWeNZGgL5NQ3RGq7%2FlphrZHyLF9gVvT8tXBANc2mYjtVyLAfEK6TI%2Ba9ZCcB34Ns4K4Wy6L9eu85CZKSrH%2F0ewAVvfC7LI2JsZrcVqDi1eEOxZ3KF8WvXnPbpNQYcutKtqm9B6j1rzqgii2ULuVWnTnUyi0J3gC%2FX8qvuQNNTuZuiMpFsPOh1SX8Zzkjv1QPYndXL%2FA%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Chaleira Elétrica · 127V</h3>
+        <div class="price">R$ 74,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BLcb%2BoDsjuc4q%2F%2BA8y6NlSJWL%2FfkHRclETjYmyMA%2Fg1ZgQ40JxYW%2B6zynt%2FuFnOn3VntuGvMJTQyHcX%2FmhEAhDj7a11FJ6kj3RPtie3in8S1ukLIzrWW%2BAo72iU%2FrWrpnVu59VR%2BnzDXYkEpxnzgeHUq0ilHeCzN5qdeSoX0UPj2YkCVVdW6Z3ycLflqvv%2BAD%2B%2BBhy2xFUDpKoDfnMkvNfciAn5mmVnt5iI7aqiteMMtEGAT#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Micro-ondas · 127V</h3>
+        <div class="price">R$ 469,06</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BDw1mq%2BxiGA0Ecjsa4kPzMF1a4Rw%2BlAdsFUr8ig3tRbOP2IY1CCzjfLkfFd37cQDwVxwpcS0YxYqia7K6xYSSKCcWz0eylDuh1GzuJaQK3bLpoLLzT%2BRkikD8842z3NRnI%2BEJrnbo%2FGiNE8XjWmdKKP%2BThAmp6eGpHvvD8v%2BGXQm8%2FQvx%2BHJhIEVkmdoQr5ejmIasqakS2rsYaD0pFj7S8XRiVB1kqO08wX3qg%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Purificador de Água · 127V</h3>
+        <div class="price">R$ 434,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BHN6J7QEfFeqtkLyUdaaRI023fLA1XYcfwPaxVwtirKogQgoj6TLWdeWiEzg4S6FWZ9IQIwkdy2zkVrzL%2FwPc%2B5h58z%2Fw37OuScF4Or6YkbMHtzTCHnQTuIAUtmBxKbgN58reIacJ69w9K%2BF6h4%2BstVqkSctN48uCQcl%2FTv5C4HIbewhKErjSacZaZLhmUjV0lzt3q8zGpafWRBEI9pTYrDjTfosFok2IWGC2A%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Fritadeira Elétrica · 127V</h3>
+        <div class="price">R$ 435,53</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BH6JDLY%2FRQ3B2kVZNPJgvv6q%2BLy%2FjT52Udip7aIR0U7PfH5xTR1MvH6w5f06cXEFSS6MByzqbc0peuQUTn%2FxZy4e3OLipir9oYnPFGEwmyeNmNPXO%2Bne4EAIXmpwV3dQJSmTtgMhhwcBJ8MVaq1t2umisxvL%2FUzSSEo9xLVIvxlV3h%2BLPuWRQ9OUP4D2eCXGIMxhP0m6FqCViU2oYCFMdgREYdd09ndCl6CLwQ%3D%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <h3>Batedeira · 127V</h3>
+        <div class="price">R$ 444,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BC0jNBhpmMpG%2BRb8MUc9npQPndUulFpUiRDxeOY13HKOSiPT7SVueeTu%2BB3Kvebdxk9LOBj6949FUDz%2ByUwmK0RwgAzW58Xb3o8kUV%2F4AfmPNLab3%2BdEQGV8bXiWsA4X0fdWWM%2FJK%2F0BXFK1hpAClYO%2FgQzv8SCfSdEEqGv%2FsxEk0a7y2bNQ2CxV0z9cZvQojp9buBdFzzcFm1aoCYxsRtxZyqThCgcmAoTRzjbGfXk%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- PRESENTES ESPECIAIS -->
+
+  <section class="section special-section" id="especiais">
+
+    <div class="section-heading">
+      <span class="category">Para aqueles presentes que marcarão nossa casa</span>
+      <h2 class="section-title">Presentes Especiais</h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Gabinete de Banheiro · Preto</h3>
+        <div class="price">R$ 461,78</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/522316174/23692582601?d_id=2617a&uls_trackid=56dj3ap400jl&utm_content=3TR3zAGzthfpP4LKbV1CzmqTTWMu" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Escrivaninha</h3>
+        <div class="price">R$ 516,88</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1461950253/58212526901?d_id=2617a&uls_trackid=56dj37q101jl&utm_content=3TR3zAGztP3MpChvcUFwkymH" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Balcão de Cozinha · Pequeno</h3>
+        <div class="price">R$ 519,38</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BAulHrZ6RjvDwvHijQbYAOyCRCTOMzwIlZbwIl0hR6oR9kBZjxit84%2BTOa6GljfbSEr9j9rjQcI4tPTeIvHByfP5ttLgPeziQ14cISHwoovQ5ybSZgT8rB4l9i9dZb5H6ldPnjs%2FHFUv0VmlcpyJdrDnPXAnOWjfQx0aPaQpORzWcxu0H%2FwsmCkVsvMdGu0HkZWIbh5TL6N2S%2Br%2FbO2X4Ren3VHCBT1KZPnRK4DVWfGLgnDG#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Buffet Aparador</h3>
+        <div class="price">R$ 788,49</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BLJmwIo%2B1FPcCstoUVmBs71bhbsipEnrtlxlKjHMwHOqM76A%2F0HMPuysNykSdd4fYXuAWTM4Ti4j7ExfDC57C%2FlvfN2Z0DNDwCYaSvbmC2H3R4U43lxGebx%2Bg0tDcGSumfr41YX%2FqhAVD2H1S0YArzNRRJ4WzZtJOAdGkwdRAQop4msudT9OqPjciflP49CNjxRX%2BkhaynL1%2BBRMEmkWPsfUoewS%2FdF5cqgsLmwh5io4JhT4#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Balcão de Cozinha · Grande</h3>
+        <div class="price">R$ 935,74</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.mercadolivre.com.br/social/leticiafigueiredo56?matt_word=leticiafigueiredo56&matt_tool=58083210&forceInApp=true&ref=BDuSd%2BZudQ%2BnjZ0jQeGzw1jb%2F9tJ7enCyH8BJqG5jHhRHBQmetjannm90RFoLKQKj6I3FOgnXvXksCloZlTKWNLFdrxyekGwNNTw1pLFjj%2Fz19knojDBVR8hwML4r7M63ddNVa4i7ZOjfleCH%2FHitwOb5ipbW3Tl%2Fl60Xmzs6bQJ8wXVih8B5wtWn8lF0H3fMXFBa6CzkXYyZw5jSHV9fFndCMSeNBZ8fiiGkhSsAWc%3D#origin=whatsapp" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Máquina de Lavar · 127V</h3>
+        <div class="price">R$ 1.709,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1009975506/22998047607?gads_t_sig=gqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMHhTT6TG85Cc8vzJ6vg0nWuZCqmJlYUmcya8kpV0O-nzkZT6vja56-UbE7P89YpQ6DAtowIJ8jxBWkzktqmNpcGhlcnRleHTEdAAAAAzTG6_2yLTh2p8foaFSCOZG8yYqJu9a8v4ahZYhtJ-vXF4WJ0XFeRl_ap2aRTnV0kEjJLN6tnoU7XzrwtCq0Q_OEEwigJQpfc8Qf6rX8ZTObfZbbBQRnk9lLR72NSbdk_m7iqbAlAdOK-65xmnnlMDW&gad_source=1&gad_campaignid=23475625589&gbraid=0AAAAACoEtRkhWi28-r6sibDvjEOoSWM2v&gclid=Cj0KCQjw-frTBhCvARIsADv4XY5KuIgL57sZcguptfDsJhg5oTiXpJwWIx9NR4PUf25J25t8_83PQBQaAjpwEALw_wcB" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Guarda-Roupas</h3>
+        <div class="price">R$ 2.369,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://shopee.com.br/product/1033307532/23798180571?gads_t_sig=gqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMHJtu46N4YL1ETOwWAbpdPCpoOnQDXHQJ5OvtcN0M_eDbRA41r_846ydnLzTRf_samdRHEh2GSlumtjiKqmNpcGhlcnRleHTEdAAAAAyg2KhxuqPbIgLSGR6BZJSwCCWr1JWlBxUwZTaAEyG1MKo4jyY5dNZckQ8KCI1kK70zFlFiCbIHz4WFQPtq6dsRa-KXpyTyYbSJe3i2kKNK00_lxLtSPKH9VLYZxkBxtRLovcx8tBT25QxgmQiv2_Q9&gad_source=1&gad_campaignid=23984594331&gbraid=0AAAAACoEtRlIg_D28cAsRNESdggdcweZO&gclid=Cj0KCQjw-frTBhCvARIsADv4XY6HE2gzbLHNO_8RrA2LsVNVJEQOxBptpX6PCaVm5wjfe3Z80qTW_DIaAg0NEALw_wcB" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+      <article class="card">
+        <span class="special-label">Presente especial</span>
+        <h3>Sofá Retrátil</h3>
+        <div class="price">R$ 2.450,00</div>
+        <div class="card-spacer"></div>
+        <a class="button" href="https://www.madeiramadeira.com.br/sofa-cama-retratil-e-reclinavel-dubai-tecido-linho-molas-ensacadas-1-90m-598946767.html?origem=pla-598946767&utm_source=google&utm_medium=cpc&utm_content=sofa-retratil-5142&utm_term=&utm_id=22811606548&gad_source=1&gad_campaignid=22811606548&gbraid=0AAAAADr4g_EnCBEJCjR1rnLqKg4s8TKF_&gclid=Cj0KCQjw-frTBhCvARIsADv4XY45BJz9NWcqVPAHjv-uhgqsMmQswduUfxNdC2gdB-dZi1hdaaxR15IaAtmnEALw_wcB" target="_blank" rel="noopener noreferrer">Ver presente</a>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <h2>Obrigada por fazer parte desse momento!</h2>
+
+  <p>
+    Mais do que qualquer presente, ter vocês ao nosso lado nesse novo
+    capítulo é o que realmente torna tudo especial.
+  </p>
+
+  <div class="heart">♡</div>
+</footer>
+
+</body>
+</html>
